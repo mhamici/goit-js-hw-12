@@ -1,7 +1,7 @@
 export const returnMarkup = arrSearchPhotos => {
-  const markup = arrSearchPhotos
+const markup = arrSearchPhotos
     .map(
-      ({
+    ({
         webformatURL,
         largeImageURL,
         tags,
@@ -9,32 +9,32 @@ export const returnMarkup = arrSearchPhotos => {
         views,
         comments,
         downloads,
-      }) => {
+    }) => {
         return `<li class="search-list-item">
                     <a class="gallery-link" href="${largeImageURL}">
-                      <img class="search-list-img" src="${webformatURL}" alt="${tags}" />
+                    <img class="search-list-img" src="${webformatURL}" alt="${tags}" />
                     </a>
                     <ul>
-                      <li>
+                    <li>
                         <h3>Likes</h3>
                         <p>${likes}</p>
-                      </li>
-                      <li>
+                    </li>
+                    <li>
                         <h3>Views</h3>
                         <p>${views}</p>
-                      </li>
-                      <li>
+                    </li>
+                    <li>
                         <h3>Comments</h3>
                         <p>${comments}</p>
-                      </li>
-                      <li>
+                    </li>
+                    <li>
                         <h3>Downloads</h3>
                         <p>${downloads}</p>
-                      </li>
+                    </li>
                     </ul>
-                  </li>`;
-      }
+                </li>`;
+    }
     )
     .join('');
-  return markup;
+return markup;
 };
