@@ -15,7 +15,7 @@ let page = 1;
 let totalPage = 1;
 let query = '';
 
-elSearchForm.addEventListener('submit', async event => {
+elSearchForm.addEventListener('submit', async (event) => {
 event.preventDefault();
 
 query = elSearchForm.elements.enterForSearsh.value.trim();
@@ -33,8 +33,7 @@ try {
     elLoader.classList.remove('is-active');
     iziToast.error({
         position: 'topRight',
-        message:
-        'Sorry, there are no images matching your search query. Please try again!',
+        message: 'Sorry, there are no images matching your search query. Please try again!',
     });
     elSearchForm.reset();
     return;
@@ -53,7 +52,11 @@ try {
     }
     lightbox.refresh();
 } catch (error) {
-    console.log(error);
+    elLoader.classList.remove('is-active'); 
+    iziToast.error({
+    position: 'topRight',
+    message: 'An error occurred while fetching data. Please try again later.',
+    });
 }
 });
 
@@ -78,12 +81,16 @@ try {
     if (totalPage === page) {
     elBtnSearchMore.classList.remove('is-active');
     iziToast.info({
-        position: 'topRight',
+        position: 'bottomCenter',
         message: "We're sorry, but you've reached the end of search results.",
     });
     }
 } catch (error) {
-    console.log(error);
+    elLoaderMore.classList.remove('is-active-more'); 
+    iziToast.error({
+    position: 'topRight',
+    message: 'An error occurred while fetching more data. Please try again later.',
+    });
 }
 });
 
